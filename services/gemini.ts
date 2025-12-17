@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Chat } from "@google/genai";
 import { Chord, ScaleType } from "../types";
 
@@ -22,20 +23,19 @@ export const getChatResponse = async (message: string, currentContext: string): 
       return "⚠️ Chave de API não configurada. Configure o arquivo .env ou o segredo do projeto.";
     }
 
+    // Always use {apiKey: process.env.API_KEY} for initialization
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
     // Inicializa o chat se não existir
     if (!chatSession) {
       chatSession = ai.chats.create({
-        model: 'gemini-2.5-flash',
+        // Using gemini-3-flash-preview for basic text tasks
+        model: 'gemini-3-flash-preview',
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
           temperature: 0.7,
         },
       });
-      
-      // Envia o contexto inicial silenciosamente (ou como primeira mensagem de setup)
-      // Mas para simplificar, apenas garantimos que a sessão existe.
     }
 
     // Adiciona o contexto atual à mensagem do usuário para que a IA saiba o que ele está vendo
@@ -45,6 +45,7 @@ export const getChatResponse = async (message: string, currentContext: string): 
       message: fullMessage
     });
 
+    // Access the .text property directly (not a method)
     return result.text || "Não entendi, pode repetir?";
   } catch (error) {
     console.error("Gemini Error:", error);

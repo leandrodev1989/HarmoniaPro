@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Harmonia - Campo Harmônico</title>
-    <meta name="description" content="Um guia interativo e visual para aprender campo harmônico no teclado, com explicações via IA." />
-    
-    <!-- Tailwind via CDN com configuração de Dark Mode por classe -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -27,26 +23,15 @@
         },
       }
     </script>
-
-    <!-- Estilos customizados adaptáveis -->
     <style>
       ::-webkit-scrollbar { width: 8px; height: 8px; }
       .dark ::-webkit-scrollbar-track { background: #1f2937; }
       ::-webkit-scrollbar-track { background: #f1f5f9; }
       .dark ::-webkit-scrollbar-thumb { background: #4b5563; }
       ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-      
-      /* Transição suave de cores para o corpo todo */
-      body { 
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
+      body { transition: background-color 0.3s ease, color 0.3s ease; }
     </style>
-
-    <!-- Polyfill de segurança -->
-    <script>
-      window.process = { env: { API_KEY: '' } };
-    </script>
+    <script>window.process = { env: { API_KEY: '' } };</script>
     <script type="importmap">
     {
       "imports": {
